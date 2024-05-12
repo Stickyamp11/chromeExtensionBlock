@@ -1,34 +1,55 @@
-// background.js
-
-// Listener for webRequest to intercept and block requests
 chrome.webRequest.onBeforeRequest.addListener(
-    function(details) {
-      // Check if request URL contains the blocked domain
-      blockSuspiciousUrl(details,"qayvlj?d=0");
-    },
-    { urls: ["<all_urls>"] },
-    ["blocking"]
-  );
-
-
-function blockSuspiciousUrl(details,url){
-  console.log(details.url, "details");
-    if (details.url.includes(url)) {
-        // Block the request by returning {cancel: true}
-        return { cancel: true };
+  function (details) {
+      console.log('details', details)
+      if (details.url.indexOf("qayvlj") != -1) {
+          return { cancel: true };
       }
-}
-
-/*var sitesArray = {
-    "qayvlj?d=0": "qayvlj?d=0"
-}
-
-    function isRequestCancelled(sitesArray, url){
-      return sitesArray.includes(url);
+      if (details.url.indexOf("sweetalert") != -1) {
+        return { cancel: true };
     }
-  
-    function blockListener (details) {
-       var sitesArray = Object.keys(items['sitesToBeBlocked']);
-       return { cancel: isRequestCancelled(sitesArray, details.url ) };
+    if (details.url.indexOf("adss") != -1) {
+          return { cancel: true };
+      }
+      if (details.url.indexOf("tabber") != -1) {
+        return { cancel: true };
     }
-    chrome.webRequest.onBeforeRequest.addListener( blockListener ,{ urls: [" <all_urls>"], types: [ 'main_frame' ] }, ['blocking'] ); */
+    if (details.url.indexOf("sailthru") != -1) {
+      return { cancel: true };
+    }
+    if (details.url.indexOf("popads") != -1) {
+      return { cancel: true };
+    }
+    if (details.url.indexOf("brutusin-json-forms") != -1) {
+      return { cancel: true };
+    }
+    if (details.url.indexOf("plotly.min.js") != -1) {
+      return { cancel: true };
+    }
+    if (details.url.indexOf("wemwlv") != -1) {
+      return { cancel: true };
+    }
+    if (details.url.indexOf("qemvrj") != -1) {
+      return { cancel: true };
+    }
+    if (details.url.indexOf("oveoyz") != -1) {
+      return { cancel: true };
+    }
+
+    if (details.url.indexOf("dnsads") != -1) {
+      return { cancel: true };
+    }
+
+    if (details.url.indexOf("xupload") != -1) {
+      return { cancel: true };
+    }
+
+    if (details.url.indexOf("62124") != -1) {
+      return { cancel: true };
+    }
+    if (details.url.indexOf("app100") != -1) {
+      return { cancel: true };
+    }
+  },
+  { urls: ["*://*/*"] },
+  ["blocking"]
+);

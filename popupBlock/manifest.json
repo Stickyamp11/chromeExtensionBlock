@@ -3,6 +3,7 @@
     "name": "PopUp blocker",
     "version": "1.0",
     "permissions": [
+      "tabs",
       "activeTab",
       "storage",
       "webRequest",
@@ -13,10 +14,13 @@
   "background": {
     "service_worker": "background.js"
   },
-    "content_scripts": [
-      {
-        "matches": ["<all_urls>"],
-        "js": ["script.js"]
-      }
-    ]
-  }
+  "browser_action":{
+  "default_popup": "adblock.html"
+  },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["script.js"]
+    }
+  ]
+}
