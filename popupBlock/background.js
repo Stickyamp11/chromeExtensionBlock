@@ -49,6 +49,12 @@ chrome.webRequest.onBeforeRequest.addListener(
     if (details.url.indexOf("app100") != -1) {
       return { cancel: true };
     }
+    if (details.url.indexOf("vtu_max.js") != -1) {
+      return { cancel: true };
+    }
+    if (details.url.indexOf("vtu_mini.js") != -1) {
+      return { cancel: true };
+    }
   },
   { urls: ["*://*/*"] },
   ["blocking"]
